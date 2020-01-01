@@ -5,12 +5,12 @@ public static class Easings
     /// <summary>
     /// Constant Pi.
     /// </summary>
-    private const float PI = Math.PI; 
+    private const float PI = (float)Math.PI; 
     
     /// <summary>
     /// Constant Pi / 2.
     /// </summary>
-    private const float HALFPI = Math.PI / 2.0f; 
+    private const float HALFPI = (float)Math.PI / 2.0f; 
     
     /// <summary>
     /// Easing Functions enumeration
@@ -70,22 +70,22 @@ public static class Easings
             case Functions.QuarticEaseInOut:      return QuarticEaseInOut(p);
             case Functions.QuinticEaseIn:         return QuinticEaseIn(p);
             case Functions.QuinticEaseOut:        return QuinticEaseOut(p);
-            case Functions.QuinticEaseInOut:      return QuinticEaseInOut(p);
-            case Functions.SineEaseIn:            return SineEaseIn(p);
-            case Functions.SineEaseOut:           return SineEaseOut(p);
-            case Functions.SineEaseInOut:         return SineEaseInOut(p);
-            case Functions.CircularEaseIn:        return CircularEaseIn(p);
-            case Functions.CircularEaseOut:       return CircularEaseOut(p);
-            case Functions.CircularEaseInOut:     return CircularEaseInOut(p);
-            case Functions.ExponentialEaseIn:     return ExponentialEaseIn(p);
-            case Functions.ExponentialEaseOut:    return ExponentialEaseOut(p);
-            case Functions.ExponentialEaseInOut:  return ExponentialEaseInOut(p);
-            case Functions.ElasticEaseIn:         return ElasticEaseIn(p);
-            case Functions.ElasticEaseOut:        return ElasticEaseOut(p);
-            case Functions.ElasticEaseInOut:      return ElasticEaseInOut(p);
-            case Functions.BackEaseIn:            return BackEaseIn(p);
-            case Functions.BackEaseOut:           return BackEaseOut(p);
-            case Functions.BackEaseInOut:         return BackEaseInOut(p);
+            case Functions.QuinticEaseInOut:      return (float)QuinticEaseInOut(p);
+            case Functions.SineEaseIn:            return (float)SineEaseIn(p);
+            case Functions.SineEaseOut:           return (float)SineEaseOut(p);
+            case Functions.SineEaseInOut:         return (float)SineEaseInOut(p);
+            case Functions.CircularEaseIn:        return (float)CircularEaseIn(p);
+            case Functions.CircularEaseOut:       return (float)CircularEaseOut(p);
+            case Functions.CircularEaseInOut:     return (float)CircularEaseInOut(p);
+            case Functions.ExponentialEaseIn:     return (float)ExponentialEaseIn(p);
+            case Functions.ExponentialEaseOut:    return (float)ExponentialEaseOut(p);
+            case Functions.ExponentialEaseInOut:  return (float)ExponentialEaseInOut(p);
+            case Functions.ElasticEaseIn:         return (float)ElasticEaseIn(p);
+            case Functions.ElasticEaseOut:        return (float)ElasticEaseOut(p);
+            case Functions.ElasticEaseInOut:      return (float)ElasticEaseInOut(p);
+            case Functions.BackEaseIn:            return (float)BackEaseIn(p);
+            case Functions.BackEaseOut:           return (float)BackEaseOut(p);
+            case Functions.BackEaseInOut:         return (float)BackEaseInOut(p);
             case Functions.BounceEaseIn:          return BounceEaseIn(p);
             case Functions.BounceEaseOut:         return BounceEaseOut(p);
             case Functions.BounceEaseInOut:       return BounceEaseInOut(p);
@@ -225,7 +225,7 @@ public static class Easings
     /// y = (1/2)((2x)^5)       ; [0, 0.5)
     /// y = (1/2)((2x-2)^5 + 2) ; [0.5, 1]
     /// </summary>
-    static public float QuinticEaseInOut(float p) 
+    static public double QuinticEaseInOut(float p) 
     {
         if(p < 0.5f)
         {
@@ -241,7 +241,7 @@ public static class Easings
     /// <summary>
     /// Modeled after quarter-cycle of sine wave
     /// </summary>
-    static public float SineEaseIn(float p)
+    static public double SineEaseIn(float p)
     {
         return Math.Sin((p - 1) * HALFPI) + 1;
     }
@@ -249,7 +249,7 @@ public static class Easings
     /// <summary>
     /// Modeled after quarter-cycle of sine wave (different phase)
     /// </summary>
-    static public float SineEaseOut(float p)
+    static public double SineEaseOut(float p)
     {
         return Math.Sin(p * HALFPI);
     }
@@ -257,23 +257,23 @@ public static class Easings
     /// <summary>
     /// Modeled after half sine wave
     /// </summary>
-    static public float SineEaseInOut(float p)
+    static public double SineEaseInOut(float p)
     {
-        return 0.5f * (1 - Math.Cos(p * PI));
+        return (0.5f * (1 - Math.Cos(p * PI)));
     }
     
     /// <summary>
     /// Modeled after shifted quadrant IV of unit circle
     /// </summary>
-    static public float CircularEaseIn(float p)
+    static public double CircularEaseIn(float p)
     {
-        return 1 - Math.Sqrt(1 - (p * p));
+        return (1 - Math.Sqrt(1 - (p * p)));
     }
     
     /// <summary>
     /// Modeled after shifted quadrant II of unit circle
     /// </summary>
-    static public float CircularEaseOut(float p)
+    static public double CircularEaseOut(float p)
     {
         return Math.Sqrt((2 - p) * p);
     }
@@ -283,7 +283,7 @@ public static class Easings
     /// y = (1/2)(1 - Math.Sqrt(1 - 4x^2))           ; [0, 0.5)
     /// y = (1/2)(Math.Sqrt(-(2x - 3)*(2x - 1)) + 1) ; [0.5, 1]
     /// </summary>
-    static public float CircularEaseInOut(float p)
+    static public double CircularEaseInOut(float p)
     {
         if(p < 0.5f)
         {
@@ -298,7 +298,7 @@ public static class Easings
     /// <summary>
     /// Modeled after the exponential function y = 2^(10(x - 1))
     /// </summary>
-    static public float ExponentialEaseIn(float p)
+    static public double ExponentialEaseIn(float p)
     {
         return (p == 0.0f) ? p : Math.Pow(2, 10 * (p - 1));
     }
@@ -306,7 +306,7 @@ public static class Easings
     /// <summary>
     /// Modeled after the exponential function y = -2^(-10x) + 1
     /// </summary>
-    static public float ExponentialEaseOut(float p)
+    static public double ExponentialEaseOut(float p)
     {
         return (p == 1.0f) ? p : 1 - Math.Pow(2, -10 * p);
     }
@@ -316,7 +316,7 @@ public static class Easings
     /// y = (1/2)2^(10(2x - 1))         ; [0,0.5)
     /// y = -(1/2)*2^(-10(2x - 1))) + 1 ; [0.5,1]
     /// </summary>
-    static public float ExponentialEaseInOut(float p)
+    static public double ExponentialEaseInOut(float p)
     {
         if(p == 0.0 || p == 1.0) return p;
         
@@ -333,7 +333,7 @@ public static class Easings
     /// <summary>
     /// Modeled after the damped sine wave y = sin(13pi/2*x)*Math.Pow(2, 10 * (x - 1))
     /// </summary>
-    static public float ElasticEaseIn(float p)
+    static public double ElasticEaseIn(float p)
     {
         return Math.Sin(13 * HALFPI * p) * Math.Pow(2, 10 * (p - 1));
     }
@@ -341,7 +341,7 @@ public static class Easings
     /// <summary>
     /// Modeled after the damped sine wave y = sin(-13pi/2*(x + 1))*Math.Pow(2, -10x) + 1
     /// </summary>
-    static public float ElasticEaseOut(float p)
+    static public double ElasticEaseOut(float p)
     {
         return Math.Sin(-13 * HALFPI * (p + 1)) * Math.Pow(2, -10 * p) + 1;
     }
@@ -351,7 +351,7 @@ public static class Easings
     /// y = (1/2)*sin(13pi/2*(2*x))*Math.Pow(2, 10 * ((2*x) - 1))      ; [0,0.5)
     /// y = (1/2)*(sin(-13pi/2*((2x-1)+1))*Math.Pow(2,-10(2*x-1)) + 2) ; [0.5, 1]
     /// </summary>
-    static public float ElasticEaseInOut(float p)
+    static public double ElasticEaseInOut(float p)
     {
         if(p < 0.5f)
         {
@@ -366,7 +366,7 @@ public static class Easings
     /// <summary>
     /// Modeled after the overshooting cubic y = x^3-x*sin(x*pi)
     /// </summary>
-    static public float BackEaseIn(float p)
+    static public double BackEaseIn(float p)
     {
         return p * p * p - p * Math.Sin(p * PI);
     }
@@ -374,7 +374,7 @@ public static class Easings
     /// <summary>
     /// Modeled after overshooting cubic y = 1-((1-x)^3-(1-x)*sin((1-x)*pi))
     /// </summary>	
-    static public float BackEaseOut(float p)
+    static public double BackEaseOut(float p)
     {
         float f = (1 - p);
         return 1 - (f * f * f - f * Math.Sin(f * PI));
@@ -385,7 +385,7 @@ public static class Easings
     /// y = (1/2)*((2x)^3-(2x)*sin(2*x*pi))           ; [0, 0.5)
     /// y = (1/2)*(1-((1-x)^3-(1-x)*sin((1-x)*pi))+1) ; [0.5, 1]
     /// </summary>
-    static public float BackEaseInOut(float p)
+    static public double BackEaseInOut(float p)
     {
         if(p < 0.5f)
         {
